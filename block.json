@@ -4,33 +4,10 @@
 	"title": "Text Box",
 	"category": "text",
 	"icon": "text-page",
-	"description": "A box of text.",
+	"description": "A box of text",
 	"keywords": ["text", "paragraph", "box"],
 	"supports": {
-		"html": false,
-		"color": {
-			"background": true,
-			"text": true,
-			"gradients": true
-		},
-		"spacing": {
-			"padding": true
-		}
-	},
-	"styles": [{
-		"name": "squared",
-		"label": "Squared",
-		"isDefault": true
-	}, {
-		"name": "rounded",
-		"label": "Rounded"
-	}],
-	"example": {
-		"attributes": {
-			"text": "This is some text!",
-			"gradient": "red-to-blue",
-			"shadow": true
-		}
+		"html": false
 	},
 	"textdomain": "text-box",
 	"editorScript": "file:./build/index.js",
@@ -40,40 +17,23 @@
 		"text": {
 			"type": "string",
 			"source": "html",
-			"selector": "p"
+			"selector": "h4"
 		},
-		"textAlignment": {
+		"alignment": {
 			"type": "string",
 			"default": "left"
-		},
-		"shadow": {
-			"type": "boolean",
-			"default": false
-		},
-		"shadowOpacity": {
-			"type": "number",
-			"default": 30
 		},
 		"backgroundColor": {
 			"type": "string"
 		},
 		"textColor": {
-			"type": "string",
-			"default": "very-light-gray"
-		},
-		"gradient": {
 			"type": "string"
 		},
-		"style": {
-			"type": "object",
-			"default": {
-				"color": {
-					"background": "#f03"
-				},
-				"spacing": {
-					"padding": {"top":"50px","right":"50px","bottom":"50px","left":"50px"}
-				}
-			}
+		"customBackgroundColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
 		}
 	}
 }
