@@ -1,21 +1,45 @@
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	RichText,
+	getColorClassName,
+} from '@wordpress/block-editor';
 import classnames from 'classnames';
 
-export default function save( { attributes } ) {
-	const { text, textAlignment, shadow, shadowOpacity } = attributes;
+export default function save({ attributes }) {
+	const {
+		text,
+		alignment,
+		backgroundColor,
+		textColor,
+		customBackgroundColor,
+		customTextColor,
+	} = attributes;
 
-	const classes = classnames( `text-box-align-${ textAlignment }`, {
-		'has-shadow': shadow,
-		[ `shadow-opacity-${ shadowOpacity }` ]: shadow && shadowOpacity,
-	} );
+	const backgroundClass = getColorClassName(
+		'background-color',
+		backgroundColor
+	);
+	const textClass = getColorClassName('color', textColor);
+	const classes = classnames(`text-box-align-${alignment}`, {
+		[textClass]: textClass,
+		[backgroundClass]: backgroundClass,
+	});
+
+	console.log();
 
 	return (
 		<RichText.Content
-			{ ...useBlockProps.save( {
+			{...useBlockProps.save({
 				className: classes,
-			} ) }
-			tagName="p"
-			value={ text }
+				style: {
+					backgroundColor: backgroundClass
+						? undefined
+						: customBackgroundColor,
+					color: textClass ? undefined : customTextColor,
+				},
+			})}
+			tagName="h4"
+			value={text}
 		/>
 	);
 }
